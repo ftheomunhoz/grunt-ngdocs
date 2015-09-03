@@ -206,7 +206,7 @@ module.exports = function(grunt) {
         };
 
     // create index.html
-    content = grunt.file.read(path.resolve(templates, 'index.tmpl'));
+    content = grunt.file.read(path.resolve(templates, 'index.html'));
     content = grunt.template.process(content, {data:data});
     grunt.file.write(path.resolve(options.dest, 'index.html'), content);
 

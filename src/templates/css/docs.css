@@ -44,6 +44,26 @@ img.AngularJS-small {
   line-height: 13px;
 }
 
+.icon-home {
+     line-height: 13px;
+ }
+
+.icon-file {
+    line-height: 13px;
+}
+
+.icon-sitemap {
+    line-height: 13px;
+}
+
+.icon-filter {
+    line-height: 13px;
+}
+
+.icon-cloud {
+    line-height: 13px;
+}
+
 /* =============================== */
 
 .form-search {

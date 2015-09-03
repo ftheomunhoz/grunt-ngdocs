@@ -868,7 +868,12 @@ Doc.prototype = {
   html_usage_service: function(dom) {
     this.html_usage_interface(dom)
   },
-
+   html_usage_factory: function(dom) {
+    this.html_usage_interface(dom)
+  },
+  html_usage_provider: function(dom) {
+    this.html_usage_interface(dom)
+  },
   html_usage_object: function(dom) {
     this.html_usage_interface(dom)
   },
@@ -968,6 +973,8 @@ var GLOBALS = /^angular\.([^\.]+)$/,
     MODULE_CONTROLLER = /^(.+)\.controllers?:([^\.]+)$/,
     MODULE_DIRECTIVE = /^(.+)\.directives?:([^\.]+)$/,
     MODULE_DIRECTIVE_INPUT = /^(.+)\.directives?:input\.([^\.]+)$/,
+    MODULE_PROVIDER = /^(.+)\.providers?:([^\.]+)$/,
+    MODULE_FACTORY = /^(.+)\.factory?:([^\.]+)$/,
     MODULE_CUSTOM = /^(.+)\.([^\.]+):([^\.]+)$/,
     MODULE_SERVICE = /^(.+)\.([^\.]+?)(Provider)?$/,
     MODULE_TYPE = /^([^\.]+)\..+\.([A-Z][^\.]+)$/;
@@ -1018,6 +1025,10 @@ function title(doc) {
     return makeTitle(match[2], 'controller', 'module', match[1]);
   } else if (match = text.match(MODULE_DIRECTIVE)) {
     return makeTitle(match[2], 'directive', 'module', match[1]);
+  } else if (match = text.match(MODULE_PROVIDER)) {
+    return makeTitle(match[2], 'provider', 'module', match[1]);
+  } else if (match = text.match(MODULE_FACTORY)) {
+    return makeTitle(match[2], 'factory', 'module', match[1]);
   } else if (match = text.match(MODULE_DIRECTIVE_INPUT)) {
     return makeTitle('input [' + match[2] + ']', 'directive', 'module', match[1]);
   } else if (match = text.match(MODULE_CUSTOM)) {
@@ -1107,6 +1118,7 @@ var KEYWORD_PRIORITY = {
   '.compiler': 5,
   '.templates': 6,
   '.services': 7,
+  '.providers': 7,
   '.di': 8,
   '.unit-testing': 9,
   '.dev_guide': 9,
@@ -1297,7 +1309,7 @@ function checkBrokenLinks(docs, apis, options) {
   docs.forEach(function(doc) {
     byFullId[doc.section + '/' + doc.id] = doc;
     if (apis[doc.section]) {
-      doc.anchors.push('directive', 'service', 'filter', 'function');
+      doc.anchors.push('directive', 'service', 'factory', 'provider', 'filter', 'function');
     }
   });
 

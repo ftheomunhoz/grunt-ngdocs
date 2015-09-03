@@ -236,6 +236,8 @@ docsApp.controller.DocsController = function($scope, $location, $window, section
       MODULE_DIRECTIVE_INPUT = /^(.+)\.directives?:input\.([^\.]+)$/,
       MODULE_FILTER = /^(.+)\.filters?:([^\.]+)$/,
       MODULE_CUSTOM = /^(.+)\.([^\.]+):([^\.]+)$/,
+      MODULE_PROVIDER = /^(.+)\.providers?:([^\.]+)$/,
+      MODULE_FACTORY = /^(.+)\.factory?:([^\.]+)$/,
       MODULE_SERVICE = /^(.+)\.([^\.]+?)(Provider)?$/,
       MODULE_TYPE = /^([^\.]+)\..+\.([A-Z][^\.]+)$/;
 
@@ -334,6 +336,12 @@ docsApp.controller.DocsController = function($scope, $location, $window, section
         match[1] = page.moduleName || match[1];
         breadcrumb.push({ name: match[1], url: sectionPath + '/' + match[1] });
         breadcrumb.push({ name: match[3] });
+      } else if (match = partialId.match(MODULE_PROVIDER)) {
+        breadcrumb.push({ name: match[1], url: sectionPath + '/' + match[1] });
+        breadcrumb.push({ name: match[2] });
+      } else if (match = partialId.match(MODULE_FACTORY)) {
+        breadcrumb.push({ name: match[1], url: sectionPath + '/' + match[1] });
+        breadcrumb.push({ name: match[2] });
       } else if (match = partialId.match(MODULE_TYPE)) {
         match[1] = page.moduleName || match[1];
         breadcrumb.push({ name: match[1], url: sectionPath + '/' + match[1] });
@@ -415,6 +423,10 @@ docsApp.controller.DocsController = function($scope, $location, $window, section
         module(page.moduleName || match[1], section).directives.push(page);
       } else if (match = id.match(MODULE_DIRECTIVE_INPUT)) {
         module(page.moduleName || match[1], section).directives.push(page);
+      } else if (match = id.match(MODULE_PROVIDER)) {
+        module(page.moduleName || match[1], section).providers.push(page);
+      } else if (match = id.match(MODULE_FACTORY)) {
+        module(page.moduleName || match[1], section).factory.push(page);
       } else if (match = id.match(MODULE_CUSTOM)) {
         if (page.type === 'service') {
           module(page.moduleName || match[1], section).service(match[3])[page.id.match(/^.+Provider$/) ? 'provider' : 'instance'] = page;
@@ -456,7 +468,8 @@ docsApp.controller.DocsController = function($scope, $location, $window, section
           controllers: [],
           directives: [],
           services: [],
-          others: [],
+          providers: [],
+          factory: [],
           service: function(name) {
             var service =  cache[this.name + ':' + name];
             if (!service) {
