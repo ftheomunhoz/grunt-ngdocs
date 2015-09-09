@@ -219,10 +219,14 @@ module.exports = function(grunt) {
           bestMatch: options.bestMatch,
           deferLoad: !!options.deferLoad
         },
-        template = options.template ? options.template : path.resolve(templates, 'index.html');
+        template = options.template ? options.template : path.resolve(templates, 'index.tmpl');
 
     // create index.html
+<<<<<<< HEAD
+    content = grunt.file.read(path.resolve(templates, 'index.html'));
+=======
     content = grunt.file.read(template);
+>>>>>>> 5b83350ea490a86996f8fcbf976e98d246017d6e
     content = grunt.template.process(content, {data:data});
     grunt.file.write(path.resolve(options.dest, 'index.html'), content);
 

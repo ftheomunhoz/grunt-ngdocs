@@ -1,3 +1,53 @@
+# 0.2.9 (2015-08-12)
+
+## Features
+### ngdocs
+
+* add support for @constructor ([c985bc6d](https://github.com/m7r/grunt-ngdocs/commit/c985bc6d))
+
+* allow dots in names #87 ([cd0db4c0](https://github.com/m7r/grunt-ngdocs/commit/cd0db4c0))
+
+
+
+## Bug fixes
+### docs
+
+* base url detect /api/ and not api ([df1c16b4](https://github.com/m7r/grunt-ngdocs/commit/df1c16b4), [5a313393](https://github.com/m7r/grunt-ngdocs/commit/5a313393))
+
+* extract repo from github urls #164 ([886be9d2](https://github.com/m7r/grunt-ngdocs/commit/886be9d2))
+
+
+
+
+# 0.2.8 (2015-06-29)
+
+## Features
+### docs
+
+* allow to inline partials ([5980bb6d](https://github.com/m7r/grunt-ngdocs/commit/5980bb6d))
+
+* use current google analytics script ([7037751b](https://github.com/m7r/grunt-ngdocs/commit/7037751b))
+
+* allow grunt variables in `options.scripts` ([4c17f086](https://github.com/m7r/grunt-ngdocs/commit/4c17f086))
+
+* allow custom template ([c8057c32](https://github.com/m7r/grunt-ngdocs/commit/c8057c32))
+
+
+
+## Bug fixes
+### docs
+
+* run from file:// url again ([c9f528a5](https://github.com/m7r/grunt-ngdocs/commit/c9f528a5))
+
+* use correct provider url  #151 ([c1ddab43](https://github.com/m7r/grunt-ngdocs/commit/c1ddab43))
+
+### ngdocs
+
+* use correct options for ngdoc files ([b5672949](https://github.com/m7r/grunt-ngdocs/commit/b5672949))
+
+
+
+
 # 0.2.7 (2015-02-12)
 
 ## Features
